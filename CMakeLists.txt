@@ -33,8 +33,8 @@ if( ${CMAKE_SYSTEM_NAME} STREQUAL "EbbRT")
   message(STATUS "Building baremetal library...")
   set(CMAKE_CXX_FLAGS 
     "${CMAKE_CXX_FLAGS} -std=gnu++14 -Wall -Werror ") 
-  set(CMAKE_CXX_FLAGS 
-    "${CMAKE_CXX_FLAGS} -iquote ${PROJECT_SOURCE_DIR}/lwip/include")
+  #set(CMAKE_CXX_FLAGS 
+  #  "${CMAKE_CXX_FLAGS} -iquote ${PROJECT_SOURCE_DIR}/lwip/include")
 
   # build & install
   include_directories(${LIB_INCLUDES})
@@ -43,8 +43,11 @@ if( ${CMAKE_SYSTEM_NAME} STREQUAL "EbbRT")
     ARCHIVE DESTINATION lib
     LIBRARY DESTINATION lib
     )
-  install( DIRECTORY ${PROJECT_SOURCE_DIR} DESTINATION
-    include/EbbRT-SocketApi FILES_MATCHING PATTERN "*.h")
+  install( FILES 
+    ${PROJECT_SOURCE_DIR}/SocketManager.h
+    ${PROJECT_SOURCE_DIR}/Vfs.h
+    DESTINATION include/EbbRT-SocketApi 
+    )
   install( DIRECTORY ${PROJECT_SOURCE_DIR}/gnu DESTINATION
     include/EbbRT-SocketApi FILES_MATCHING PATTERN "*.h")
   install( DIRECTORY ${PROJECT_SOURCE_DIR}/lwip DESTINATION
