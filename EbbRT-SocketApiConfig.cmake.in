@@ -1,0 +1,4 @@
+@PACKAGE_INIT@
+set_and_check(EBBRT_SOCKETAPI_INCLUDE_DIRS "@PACKAGE_INSTALL_INCLUDE_DIR@")
+set_and_check(EBBRT_SOCKETAPI_LIBRARIES "@PACKAGE_INSTALL_LIB_DIR@libEbbRT_SocketApi.a")
+check_required_components(EbbRT_SocketApi)
